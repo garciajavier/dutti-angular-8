@@ -1,8 +1,13 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+        "baseUrl": "src",
+    "paths": {
+        "@/*": [
+          "app/*"
+        ]
+    },
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -17,7 +22,10 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "emitDecoratorMetadata": true,
+    "target": "ES5",
+
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

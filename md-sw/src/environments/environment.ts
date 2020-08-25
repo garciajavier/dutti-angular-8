@@ -3,9 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api_offline: false,
+  api_url: 'http://localhost:4000',
+  api_sw_url_base: 'https://swapi.dev/api',
+  api_sw_imageUrl_base: 'https://starwars-visualguide.com/assets/img/starships/'
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

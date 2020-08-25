@@ -1,0 +1,15 @@
+<mat-toolbar class="d-flex justify-content-between" *ngIf="currentUser">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <mat-icon (click)="starship()">menu</mat-icon>
+</button>
+    <span>Massimo Dutti - SW</span>
+    <div>
+        <span>Hola, {{currentUser.firstName}} </span>
+        <button mat-icon-button class="example-icon" aria-label="loggout-button">
+    <mat-icon (click)="logout()">power_settings_new</mat-icon>
+  </button>
+    </div>
+</mat-toolbar>
+<div class="router-outlet-display">
+    <router-outlet></router-outlet>
+</div>
