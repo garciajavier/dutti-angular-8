@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { StarShip } from '@/core/models/starship.model';
 import { Paginated } from '@/core/models/pagination.model';
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { environment } from 'environments/environment';
 
 @Injectable({
@@ -29,8 +29,8 @@ export class StarShipsService {
   /**
    * Get one Starships
    */
-  getStarShip(id: number): Observable<StarShip> {
-    const endpoint = `${environment.api_sw_url_base}/starships/${id}`;
+  getStarShip(id: string): Observable<StarShip> {
+    const endpoint = `${environment.api_sw_url_base}/starships/${id}/`;
     return this.http.get<StarShip>(endpoint);
   }
 }

@@ -1,5 +1,5 @@
 ﻿<div class="row p-4">
     <div class="col-sm-6 mb-4" *ngFor="let starShip of (starShips$ | async) ">
-        <app-starship-card [starShip]="starShip"></app-starship-card>
+        <app-starship-card class="pointer" [starShip]="starShip" (click)="detail(starShip)"></app-starship-card>
     </div>
 </div>

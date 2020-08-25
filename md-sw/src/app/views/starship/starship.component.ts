@@ -1,11 +1,13 @@
-﻿import { environment } from 'environments/environment';
+﻿
+import { environment } from 'environments/environment';
 import { takeUntil } from 'rxjs/operators';
-import { StarShipsService } from './../../services/starships.service';
+import { StarShipsService } from '@/services/starships.service';
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Paginated } from '@/core/models/pagination.model';
 import { StarShip } from '@/core/models/starship.model';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({ templateUrl: 'starship.component.html' })
@@ -42,13 +44,10 @@ export class StarshipComponent implements OnInit, OnDestroy {
    */
   private destroy$: Subject<void> = new Subject<void>();
 
-  constructor(private starShipsService: StarShipsService) {
-    console.log('constructor');
-
+  constructor(private starShipsService: StarShipsService, private router: Router) {
   }
 
   ngOnInit() {
-    console.log('ngOnInit');
     this.getAllStarShips();
   }
 
@@ -66,7 +65,8 @@ export class StarshipComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       ).subscribe((response: Paginated<StarShip>) => {
         const starships = response.results ? response.results.map((starShip: StarShip) => {
-          starShip.imageUrl = `${environment.api_sw_imageUrl_base}${starShip.url.split('/')[starShip.url.split('/').length - 2]}.jpg`;
+          starShip.id = parseInt(starShip.url.split('/')[starShip.url.split('/').length - 2], 0);
+          starShip.imageUrl = `${environment.api_sw_imageUrl_base}${starShip.id}.jpg`;
           starShip.defaultImage = 'url(assets/images/not_found.png)';
           return starShip;
         }) : [];
@@ -75,6 +75,10 @@ export class StarshipComponent implements OnInit, OnDestroy {
           this.starShips.next(starships);
         }
       });
+  }
+
+  detail(starShip: StarShip) {
+    this.router.navigate(['starships', starShip.id]);
   }
 
 }

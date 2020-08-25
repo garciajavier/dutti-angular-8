@@ -1,11 +1,5 @@
 <mat-card class="card">
     <img mat-card-image [src]="starShip.imageUrl" onerror="this.src='./assets/images/not_found.png';" alt="StarShip image">
-    <mat-card-header>
-        <div mat-card-avatar class="header-image"></div>
-        <mat-card-title>{{starShip.name}}</mat-card-title>
-        <mat-card-subtitle>{{starShip.model}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-actions>
-        <button mat-button>Detalle</button>
-    </mat-card-actions>
+    <mat-card-title>{{starShip.name}}</mat-card-title>
+    <mat-card-subtitle>{{starShip.model}}</mat-card-subtitle>
 </mat-card>

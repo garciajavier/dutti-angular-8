@@ -1,1 +1,5 @@
-<p>starship-detail works!</p>
+<mat-card class="card">
+    <img mat-card-image [src]="starShip.imageUrl" onerror="this.src='./assets/images/not_found.png';" alt="StarShip image">
+    <mat-card-title>{{starShip.name}}</mat-card-title>
+    <mat-card-subtitle>{{starShip.model}}</mat-card-subtitle>
+</mat-card>
