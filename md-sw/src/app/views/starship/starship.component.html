@@ -1,2 +1,5 @@
-﻿<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 8!!</p>
+﻿<div class="row p-4">
+    <div class="col-sm-6 mb-4" *ngFor="let starShip of (starShips$ | async) ">
+        <app-starship-card [starShip]="starShip"></app-starship-card>
+    </div>
+</div>

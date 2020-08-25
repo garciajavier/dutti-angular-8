@@ -1,4 +1,3 @@
-
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorHandlerInterceptor } from './interceptors/error-handler.interceptor';
 import { NgModule } from '@angular/core';
@@ -10,7 +9,7 @@ import { fakeBackendProvider } from './services/fake-backend';
 @NgModule({
   imports: [
     CommonModule,
-    LayoutModule
+    LayoutModule,
   ],
   exports: [
     LayoutModule
