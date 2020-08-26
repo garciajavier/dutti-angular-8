@@ -1,5 +1,26 @@
-<mat-card class="card">
-    <img mat-card-image [src]="starShip.imageUrl" onerror="this.src='./assets/images/not_found.png';" alt="StarShip image">
-    <mat-card-title>{{starShip.name}}</mat-card-title>
-    <mat-card-subtitle>{{starShip.model}}</mat-card-subtitle>
-</mat-card>
+<div class="pl-5 mb-2 pr-5 row">
+    <button mat-button appBackButton>Volver</button>
+</div>
+<div class="pl-5 pr-5 row">
+    <div class="col-md-6 pb-5">
+        <app-starship-card class="pointer" [starShip]="starShip"></app-starship-card>
+    </div>
+    <div class="col-md-6">
+        <mat-card class="card">
+            <mat-card-content>
+                <p><strong>Tipo de nave:</strong> {{starShip.starship_class}}</p>
+                <p><strong>Fabricante:</strong> {{starShip.manufacturer}}</p>
+                <p><strong>Pasajeros:</strong> {{starShip.passengers}}</p>
+                <p><strong>Longitud:</strong> {{starShip.length}} m</p>
+                <p><strong>MGLT:</strong> {{starShip.MGLT}}</p>
+                <p><strong>Capacidad de carga:</strong> {{starShip.cargo_capacity}} toneladas</p>
+                <p><strong>Consumibless:</strong> {{starShip.consumables}}</p>
+                <p><strong>Tripulación:</strong> {{starShip.crew}}</p>
+                <p><strong>Costes:</strong> {{starShip.cost_in_credits}} creditos</p>
+                <p><strong>Hiperimpulsor:</strong> {{starShip.hyperdrive_rating}}</p>
+                <p><strong>Velocidad máxima:</strong> {{starShip.max_atmosphering_speed}} atmosferas</p>
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>
