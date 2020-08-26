@@ -2,51 +2,38 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { StarShip } from '@/core/models/starship.model';
 import { Paginated } from '@/core/models/pagination.model';
-import { Observable, of } from 'rxjs';
-import { switchMap, map, publishReplay, refCount, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
+import { CacheService } from '@/core/helpers/cache.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StarShipsService {
 
-  private cacheStarShip: Observable<StarShip>[] = [];
-  private cachePage: Observable<Paginated<StarShip>>[] = [];
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cache: CacheService) { }
 
   /**
    * Get all starships in paginated format
    */
   getAllStarShips(page: number = 1): Observable<Paginated<StarShip>> {
-    if (!this.cachePage[page]) {
+    if (!this.cache.cache[`$page-${page}`]) {
       const endpoint = `${environment.api_sw_url_base}/starships/?page=${page}`;
-      this.cachePage[page] = this.http.get<Paginated<StarShip>>(endpoint)
-        .pipe(
-          publishReplay(1, 5 * 60 * 1000),
-          refCount(),
-          take(1),
-          switchMap(response => {
-            return of<Paginated<StarShip>>(response);
-          })
-        );
+      this.cache.cache[`$page-${page}`] = this.http.get<Paginated<StarShip>>(endpoint).pipe(this.cache.cachePipe());
     }
-    return this.cachePage[page];
+    return this.cache.cache[`$page-${page}`];
   }
 
   /**
    * Get one Starships
    */
   getStarShip(id: string): Observable<StarShip> {
-    if (!this.cacheStarShip[id]) {
+    if (!this.cache.cache[`$id-${id}`]) {
       const endpoint = `${environment.api_sw_url_base}/starships/${id}/`;
-      this.cacheStarShip[id] = this.http.get<StarShip>(endpoint).pipe(
-        publishReplay(1, 5 * 60 * 1000),
-        refCount(),
-        take(1),
-      );
+      this.cache.cache[`$id-${id}`] = this.http.get<StarShip>(endpoint).pipe(this.cache.cachePipe());
     }
-    return this.cacheStarShip[id];
+    return this.cache.cache[`$id-${id}`];
   }
+
+
 }

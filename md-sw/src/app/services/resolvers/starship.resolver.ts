@@ -1,3 +1,4 @@
+import { StarshipHelperService } from './../helpers/starship-helper.service';
 import { environment } from 'environments/environment';
 import { Injectable, OnDestroy } from '@angular/core';
 import { StarShip } from '@/core/models/starship.model';
@@ -13,7 +14,10 @@ export class StarShipResolver implements Resolve<StarShip>, OnDestroy {
    */
   private destroy$: Subject<void> = new Subject<void>();
 
-  constructor(private service: StarShipsService) { }
+  constructor(
+    private service: StarShipsService,
+    private starshipHelperService: StarshipHelperService
+  ) { }
 
   ngOnDestroy() {
     this.destroy$.next();
@@ -21,16 +25,13 @@ export class StarShipResolver implements Resolve<StarShip>, OnDestroy {
   }
 
   resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    route: ActivatedRouteSnapshot
   ): Observable<any> | Promise<any> | any {
     return this.service.getStarShip(route.paramMap.get('id'))
       .pipe(
         takeUntil(this.destroy$),
         map((response: StarShip) => {
-          response.imageUrl = `${environment.api_sw_imageUrl_base}${response.url.split('/')[response.url.split('/').length - 2]}.jpg`;
-          response.defaultImage = 'url(assets/images/not_found.png)';
-          return response;
+          return this.starshipHelperService.setAditionaData(response);
         }));
   }
 

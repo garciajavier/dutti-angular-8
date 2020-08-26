@@ -1,5 +1,9 @@
-﻿<div class="row p-4">
-    <div class="col-sm-6 mb-4" *ngFor="let starShip of (starShips$ | async) ">
+﻿<div class="row pl-5 pr-5">
+    <mat-paginator [length]="totalItems" [pageSize]="pageSize" [showFirstLastButtons]="true" [hidePageSize]="true" (page)="pageEvent = getPaginatorData($event)">
+    </mat-paginator>
+</div>
+<div class="row pl-5 pr-5">
+    <div class="col-sm-6 mb-4" *ngFor="let starShip of (starShips$ | async)">
         <app-starship-card class="pointer" [starShip]="starShip" (click)="detail(starShip)"></app-starship-card>
     </div>
 </div>

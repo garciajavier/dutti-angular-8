@@ -1,13 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
-
-import { environment } from 'environments/environment';
 import { StarShip } from '@/core/models/starship.model';
-import { StarShipsService } from '@/services/starships.service';
-
-
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-starship-detail',
@@ -18,7 +12,9 @@ export class StarshipDetailComponent implements OnInit {
 
   public starShip: StarShip;
 
-  constructor(private starShipsService: StarShipsService, private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.activatedRoute.data.subscribe((data) => {

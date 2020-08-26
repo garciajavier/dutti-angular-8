@@ -8,6 +8,7 @@ import { Paginated } from '@/core/models/pagination.model';
 import { StarShip } from '@/core/models/starship.model';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { StarshipHelperService } from '@/services/helpers/starship-helper.service';
 
 
 @Component({ templateUrl: 'starship.component.html' })
@@ -19,36 +20,24 @@ export class StarshipComponent implements OnInit, OnDestroy {
   starShips: BehaviorSubject<StarShip[]> = new BehaviorSubject<StarShip[]>([]);
   starShips$ = this.starShips.asObservable();
 
-  /**
-   *  Default Page
-   */
-  defaultPage = 1;
-
-  /**
-   *  Current Page
-   */
-  currentPage = 1;
-
-  /**
-   *  Items Per Page
-   */
-  itemsPerPage = 10;
-
-  /**
-   *  Total items
-   */
+  pageIndex = 1;
+  pageSize = 10;
   totalItems = 0;
+
 
   /**
    * Use to destroy and prevent memory leaks
    */
   private destroy$: Subject<void> = new Subject<void>();
 
-  constructor(private starShipsService: StarShipsService, private router: Router) {
+  constructor(
+    private starShipsService: StarShipsService,
+    private starhipsHelperService: StarshipHelperService,
+    private router: Router) {
   }
 
   ngOnInit() {
-    this.getAllStarShips();
+    this.getAllStarShips(1);
   }
 
   ngOnDestroy() {
@@ -59,16 +48,13 @@ export class StarshipComponent implements OnInit, OnDestroy {
   /**
    * Get all starships
    */
-  getAllStarShips(page?: number): void {
-    this.starShipsService.getAllStarShips(page ? page : this.defaultPage)
+  getAllStarShips(page: number): void {
+    this.starShipsService.getAllStarShips(page ? page : this.pageIndex)
       .pipe(
         takeUntil(this.destroy$)
       ).subscribe((response: Paginated<StarShip>) => {
         const starships = response.results ? response.results.map((starShip: StarShip) => {
-          starShip.id = parseInt(starShip.url.split('/')[starShip.url.split('/').length - 2], 0);
-          starShip.imageUrl = `${environment.api_sw_imageUrl_base}${starShip.id}.jpg`;
-          starShip.defaultImage = 'url(assets/images/not_found.png)';
-          return starShip;
+          return this.starhipsHelperService.setAditionaData(starShip);
         }) : [];
         if (response.results) {
           this.totalItems = response.count;
@@ -79,6 +65,10 @@ export class StarshipComponent implements OnInit, OnDestroy {
 
   detail(starShip: StarShip) {
     this.router.navigate(['starships', starShip.id]);
+  }
+
+  getPaginatorData(event) {
+    this.getAllStarShips(event.pageIndex + 1);
   }
 
 }

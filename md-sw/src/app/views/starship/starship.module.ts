@@ -1,4 +1,4 @@
-import { UrlSrcDirective } from './../../core/directives/url-src/url-src.directive';
+import { BackButtonDirective } from './../../core/directives/back-button.directive';
 import { MaterialModule } from './../../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { StarshipDetailComponent } from './starship-detail/starship-detail.compo
 
 
 @NgModule({
-  declarations: [StarshipComponent, StarshipCardComponent, StarshipDetailComponent, UrlSrcDirective],
+  declarations: [StarshipComponent, StarshipCardComponent, StarshipDetailComponent, BackButtonDirective],
   imports: [
     CommonModule,
     StarshipRoutingModule,

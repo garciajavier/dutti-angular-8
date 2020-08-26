@@ -2,15 +2,15 @@
 
 app-root {
     height: 100%;
-    margin: 0;
+    // margin: 0;
 }
 
 html,
 body {
     min-height: 100%;
     height: auto;
-    margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    overflow-x: hidden;
 }
 
 .RouterOutlet {
@@ -26,6 +26,16 @@ mat-toolbar {
     position: fixed;
     justify-content: space-between;
     z-index: 1000;
+    margin: 0;
+    border-bottom: 1px solid rgb(212, 212, 212);
+    background: rgb(255, 255, 255) !important;
+}
+
+.card {
+    border-radius: 0 !important;
+    border: none !important;
+    transition: none !important;
+    box-shadow: none !important;
 }
 
 .pointer {
