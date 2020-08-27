@@ -1,3 +1,4 @@
+import { UserResolver } from '@/services/resolvers/users.resolver';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,6 +18,14 @@ const routes: Routes = [
     path: '',
     component: TopbarMenuComponent,
     children: [
+      {
+        path: 'users',
+        loadChildren: () => import('./views/admin-user/admin-user.module').then(m => m.AdminUserModule),
+        resolve: {
+          users: UserResolver
+        },
+        canActivate: [AuthGuard]
+      },
       {
         path: 'starships',
         loadChildren: () => import('./views/starship/starship.module').then(m => m.StarshipModule),

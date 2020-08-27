@@ -1,0 +1,14 @@
+<div class="row pt-3 pl-5">
+    <h4>Usuarios</h4>
+</div>
+
+<div class="row pl-5 pr-5">
+    <div class="col-sm-3 mb-4" *ngFor="let user of users$ | async">
+        <mat-card class="card pb-3">
+            <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+            <mat-card-subtitle> {{user.username}} </mat-card-subtitle>
+            <button mat-flat-button color="accent" [hidden]="user.id === currentUser.id" color="primary" style="cursor: pointer;" (click)="deleteUser(user.id)">Eliminar
+         </button>
+        </mat-card>
+    </div>
+</div>

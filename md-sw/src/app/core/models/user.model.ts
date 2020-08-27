@@ -7,7 +7,7 @@ export class User {
     public token: string,
     public firstName?: string,
     public lastName?: string,
-    public userName?: string,
+    public username?: string,
     public password?: string,
     public roles?: Role[]
   ) {
