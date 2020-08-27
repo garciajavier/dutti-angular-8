@@ -1,0 +1,80 @@
+@import "colors.scss";
+@import "variables.scss";
+// Texts
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $primary;
+    margin: 0 !important;
+}
+
+h5,
+h6 {
+    font-family: "MassimoDuttiBasisGrotesque";
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    color: $primary;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+a {
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline !important;
+    transition: 0.2s all;
+    &:hover {
+        color: $black !important;
+    }
+}
+
+// Dividers
+hr {
+    color: $secondary;
+}
+
+span {
+    font-size: 14px;
+}
+
+// Buttons
+button:focus,
+button:active:focus,
+button.active:focus {
+    outline: none !important;
+    outline-style: none !important;
+}
+
+// Cards
+.card__primary {
+    background-color: $white;
+    padding: 20px;
+}
+
+// Textarea
+textarea {
+    height: 100px;
+}
+
+// Main view
+.view-container {
+    padding: 1.5em 2em;
+}
+
+// Router outlet
+.router-outlet-display {
+    height: calc(100vh - 64px);
+}
+
+@media (max-width: $screen-md-min) {
+    .router-outlet-display {
+        height: calc(100vh - 56px) !important;
+    }
+    .view-container {
+        padding: 1em 1.5em;
+    }
+}

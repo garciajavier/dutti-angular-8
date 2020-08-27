@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
+@import "colors.scss";
 app-root {
     height: 100%;
     // margin: 0;
@@ -43,5 +42,5 @@ mat-toolbar {
 }
 
 .mat-drawer-container {
-    background-color: transparent;
+    background-color: transparent !important;
 }
