@@ -24,7 +24,10 @@ const routes: Routes = [
         resolve: {
           users: UserResolver
         },
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: {
+          roles: ['ADMIN']
+        }
       },
       {
         path: 'starships',

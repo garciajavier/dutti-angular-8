@@ -1,10 +1,12 @@
-﻿import { MatSnackBar } from '@angular/material';
+﻿import { DataService } from './../../../services/data-service.service';
+import { MatSnackBar } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '@/core/services/authentication.service';
 import { UserService } from '@/services/user.service';
+import { Role } from '@/core/models/role.model';
 
 
 @Component({
@@ -20,9 +22,10 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authenticationService: AuthenticationService,
     private userService: UserService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public authenticationService: AuthenticationService,
+    private dataService: DataService
   ) {
     // redirect to starship if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -31,10 +34,14 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.get('user-roles').subscribe((roles: Role[]) => {
+      this.authenticationService.setRoles = roles;
+    });
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       username: ['', Validators.required],
+      roles: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -57,7 +64,7 @@ export class RegisterComponent implements OnInit {
         this.snackBar.open('Registro completado', 'OK', {
           duration: 2000,
         });
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
       });
   }
 }

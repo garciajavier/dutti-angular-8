@@ -10,16 +10,16 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
-  constructor(private snackBar: MatSnackBar, private authenticationService: AuthenticationService) { }
+  constructor(private snackBar: MatSnackBar, private authenticationService: AuthenticationService, private router: Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request)
       .pipe(
         retry(1),
         catchError((error: HttpErrorResponse) => {
-          // const error = err.error.message || err.statusText;
           let errorMessage = '';
           if (error && error.error && error.error.message) {
             errorMessage = `${error.error.message || error.statusText}`;
@@ -40,6 +40,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
             this.authenticationService.logout();
             location.reload();
           }
+          this.router.navigate(['/']);
           return throwError(errorMessage);
         })
       );

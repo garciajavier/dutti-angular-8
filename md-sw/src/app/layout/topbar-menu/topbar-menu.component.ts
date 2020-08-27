@@ -9,26 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./topbar-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TopbarMenuComponent implements OnInit {
+export class TopbarMenuComponent {
   currentUser: User;
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-  }
-
-  ngOnInit(): void {
-
+    this.authenticationService.currentUser$.subscribe(user => this.currentUser = user);
   }
 
   logout() {
-    this.authenticationService.logout();
     this.router.navigate(['/login']);
+    this.authenticationService.logout();
   }
   starship() {
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 
 }

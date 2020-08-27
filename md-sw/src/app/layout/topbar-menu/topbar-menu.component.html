@@ -15,7 +15,7 @@
         <mat-sidenav #sidenav>
             <mat-nav-list>
                 <a mat-list-item [routerLink]="'/'" (click)="sidenav.toggle()"> Naves espaciales </a>
-                <a mat-list-item [routerLink]="'/users'" (click)="sidenav.toggle()"> Usuarios </a>
+                <a mat-list-item *ngIf="authenticationService.userCan(['ADMIN'])" [routerLink]="'/users'" (click)="sidenav.toggle()"> Usuarios </a>
             </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>
