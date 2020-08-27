@@ -14,7 +14,9 @@
     <mat-sidenav-container class="custom-sidenav-container">
         <mat-sidenav #sidenav>
             <mat-nav-list>
+                <img class="logo pl-4 pr-4" width="160px" src="./assets/images/swlogo.png" alt="Massimo Dutti logo">
                 <a mat-list-item [routerLink]="'/'" (click)="sidenav.toggle()"> Naves espaciales </a>
+                <div mat-subheader>Administración</div>
                 <a mat-list-item [routerLink]="'/users'" (click)="sidenav.toggle()"> Usuarios </a>
             </mat-nav-list>
         </mat-sidenav>
