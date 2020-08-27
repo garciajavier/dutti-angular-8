@@ -3,7 +3,7 @@
 </div>
 
 <div class="row pl-5 pr-5">
-    <div class="col-sm-3 mb-4" *ngFor="let user of users$ | async">
+    <div class="col-sm-2 mb-4" *ngFor="let user of users$ | async">
         <mat-card class="card pb-3">
             <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
             <mat-card-subtitle> {{user.username}} </mat-card-subtitle>

@@ -4,7 +4,7 @@
     </mat-paginator>
 </div>
 <div class="row pl-5 pr-5">
-    <div class="col-sm-6 mb-4" *ngFor="let starShip of (starShips$ | async)">
+    <div class="col-sm-3 mb-4" *ngFor="let starShip of (starShips$ | async)">
         <app-starship-card class="pointer" [starShip]="starShip" (click)="detail(starShip)"></app-starship-card>
     </div>
 </div>
