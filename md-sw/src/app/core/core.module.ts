@@ -1,3 +1,4 @@
+import { UrlSrcDirective } from './directives/url-src/url-src.directive';
 import { LoaderSpinnerComponent } from './components/loader-spinner/loader-spinner.component';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -12,7 +13,8 @@ import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
 
 @NgModule({
   declarations: [
-    LoaderSpinnerComponent
+    LoaderSpinnerComponent,
+    UrlSrcDirective
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,7 @@ import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
     LayoutModule,
     LoaderSpinnerComponent,
     LayoutModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

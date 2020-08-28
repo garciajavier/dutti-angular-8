@@ -1,9 +1,8 @@
 ﻿
-import { environment } from 'environments/environment';
 import { takeUntil } from 'rxjs/operators';
 import { StarShipsService } from '@/services/starships.service';
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Paginated } from '@/core/models/pagination.model';
 import { StarShip } from '@/core/models/starship.model';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -11,7 +10,12 @@ import { Router } from '@angular/router';
 import { StarshipHelperService } from '@/services/helpers/starship-helper.service';
 
 
-@Component({ templateUrl: 'starship.component.html' })
+@Component(
+  {
+    templateUrl: 'starship.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
+  },
+)
 export class StarshipComponent implements OnInit, OnDestroy {
 
   /**

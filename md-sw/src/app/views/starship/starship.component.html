@@ -1,6 +1,6 @@
 ﻿<div class="row pt-3 pl-5 pr-5 d-flex justify-content-between">
     <h5>Naves Espaciales</h5>
-    <mat-paginator [length]="totalItems" [pageSize]="pageSize" [showFirstLastButtons]="true" [hidePageSize]="true" (page)="pageEvent = getPaginatorData($event)">
+    <mat-paginator [length]="totalItems" [pageSize]="pageSize" [showFirstLastButtons]="true" [hidePageSize]="true" (page)="getPaginatorData($event)">
     </mat-paginator>
 </div>
 <div class="row pl-5 pr-5">

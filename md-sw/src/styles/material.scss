@@ -13,18 +13,18 @@ $md-warn: ( 50: #f9e0e6, 100: #f1b3c1, 200: #e78098, 300: #dd4d6e, 400: #d6264f,
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$audiprestige-frontend-primary: mat-palette($md-prim);
-$audiprestige-frontend-accent: mat-palette($md-accent, A200, A100, A400);
+$mdsw-frontend-primary: mat-palette($md-prim);
+$mdsw-frontend-accent: mat-palette($md-accent, A200, A100, A400);
 // The warn palette is optional (defaults to red).
-$audiprestige-frontend-warn: mat-palette($md-warn);
+$mdsw-frontend-warn: mat-palette($md-warn);
 // Create the theme object (a Sass map containing all of the palettes).
-$audiprestige-frontend-theme: mat-light-theme( $audiprestige-frontend-primary, $audiprestige-frontend-accent, $audiprestige-frontend-warn);
+$mdsw-frontend-theme: mat-light-theme( $mdsw-frontend-primary, $mdsw-frontend-accent, $mdsw-frontend-warn);
 $custom-typography: mat-typography-config( $font-family: "MassimoDuttiBasisGrotesque");
 @include angular-material-typography($custom-typography);
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($audiprestige-frontend-theme);
+@include angular-material-theme($mdsw-frontend-theme);
 // Input fields
 .mat-hint {
     color: $secondary;
@@ -57,6 +57,10 @@ $custom-typography: mat-typography-config( $font-family: "MassimoDuttiBasisGrote
     width: 100%;
 }
 
+.mat-raised-button {
+    box-shadow: none !important;
+}
+
 // Menu
 .mat-menu-panel {
     border-radius: 0 !important;
@@ -64,16 +68,6 @@ $custom-typography: mat-typography-config( $font-family: "MassimoDuttiBasisGrote
 
 .mat-menu-content:not(:empty) {
     padding: 0 !important;
-}
-
-.mat-menu-item.inverted {
-    padding: 0 16px !important;
-    padding-left: 32px !important;
-    &:after {
-        right: 0 !important;
-        left: 16px;
-        transform: translateY(-50%) rotate(180deg) !important;
-    }
 }
 
 // Router
@@ -326,8 +320,26 @@ mat-footer-row {
 }
 
 // SIDENAV
+mat-sidenav-container {
+    display: inherit;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    -webkit-transform: inherit;
+    transform: inherit;
+}
+
 .mat-drawer-container {
+    background-color: transparent !important;
     overflow: visible !important;
+}
+
+.mat-drawer-inner-container {
+    width: 500px !important;
+}
+
+.mat-drawer-content {
+    overflow-x: hidden !important;
 }
 
 // CARD
