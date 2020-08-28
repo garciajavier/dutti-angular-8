@@ -2,7 +2,7 @@ import { UserService } from '@/services/user.service';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import { takeUntil, map, first } from 'rxjs/operators';
+import { takeUntil, first } from 'rxjs/operators';
 import { User } from '@/core/models/user.model';
 
 @Injectable({ providedIn: 'root' })

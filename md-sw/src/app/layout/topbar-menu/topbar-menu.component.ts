@@ -1,6 +1,6 @@
 import { AuthenticationService } from '@/core/services/authentication.service';
 
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { User } from '@/core/models/user.model';
 import { Router } from '@angular/router';
 @Component({

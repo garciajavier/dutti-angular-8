@@ -1,9 +1,8 @@
 import { StarshipHelperService } from './../helpers/starship-helper.service';
-import { environment } from 'environments/environment';
 import { Injectable, OnDestroy } from '@angular/core';
 import { StarShip } from '@/core/models/starship.model';
-import { Observable, of, Subject } from 'rxjs';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { StarShipsService } from '../starships.service';
 import { takeUntil, map } from 'rxjs/operators';
 

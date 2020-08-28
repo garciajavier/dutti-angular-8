@@ -1,7 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { StarShip } from '@/core/models/starship.model';
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-starship-detail',

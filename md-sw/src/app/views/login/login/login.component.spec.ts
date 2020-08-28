@@ -1,3 +1,11 @@
+import { AuthenticationService } from '@/core/services/authentication.service';
+import { USERS } from './../../../../assets/mocks/user/admin-user.mock';
+import { AuthGuard } from './../../../core/guards/auth.guard';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MaterialModule } from './../../../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
@@ -8,9 +16,22 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      imports: [
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        HttpClientTestingModule,
+        RouterTestingModule
+      ],
+      declarations: [
+        LoginComponent
+      ],
+      providers: [
+        AuthGuard,
+        AuthenticationService
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +42,25 @@ describe('LoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call login and gohome', () => {
+    component.ngOnInit();
+    component.loginForm.setValue({
+      username: USERS[0].username,
+      password: '111111'
+    });
+    fixture.detectChanges();
+    component.onSubmit();
+  });
+
+  it('should call login and wrong credentials', () => {
+    component.ngOnInit();
+    component.loginForm.setValue({
+      username: 'john',
+      password: '111'
+    });
+    fixture.detectChanges();
+    component.onSubmit();
   });
 });

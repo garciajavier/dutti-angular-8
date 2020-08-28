@@ -40,6 +40,7 @@ describe('LoaderSpinnerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
   it('should get loader status and get true', () => {
     const service = TestBed.get(LoaderService);
     service.isLoading = new BehaviorSubject(true);

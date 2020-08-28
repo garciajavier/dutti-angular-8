@@ -1,6 +1,13 @@
+import { StarshipCardComponent } from './starship-card/starship-card.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AuthenticationService } from '@/core/services/authentication.service';
+import { MatCardModule } from '@angular/material/card';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { StarshipComponent } from './starship.component';
+import { MatPaginatorModule } from '@angular/material';
+
 
 describe('StarshipComponent', () => {
   let component: StarshipComponent;
@@ -8,7 +15,9 @@ describe('StarshipComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [StarshipComponent]
+      imports: [BrowserAnimationsModule, HttpClientTestingModule, MatPaginatorModule, MatCardModule, RouterTestingModule],
+      declarations: [StarshipComponent, StarshipCardComponent],
+      providers: [AuthenticationService]
     })
       .compileComponents();
   }));
