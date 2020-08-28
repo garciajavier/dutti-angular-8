@@ -5,6 +5,9 @@
 # Only exists if Bazel was run
 /bazel-out
 
+#DOC
+/documentation
+
 # dependencies
 /node_modules
 
