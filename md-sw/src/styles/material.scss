@@ -323,10 +323,14 @@ mat-footer-row {
 mat-sidenav-container {
     display: inherit;
     position: fixed;
-    height: 100%;
+    height: 93vh !important;
     width: 100%;
     -webkit-transform: inherit;
     transform: inherit;
+}
+
+.mat-drawer-backdrop.mat-drawer-shown {
+    background-color: transparent;
 }
 
 .mat-drawer-container {
@@ -335,7 +339,7 @@ mat-sidenav-container {
 }
 
 .mat-drawer-inner-container {
-    width: 500px !important;
+    width: 380px !important;
 }
 
 .mat-drawer-content {
