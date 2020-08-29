@@ -41,7 +41,7 @@ export class StarshipComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.getAllStarShips(1);
+    this.getPaginatorData({ pageIndex: 0 });
   }
 
   ngOnDestroy() {
@@ -53,7 +53,7 @@ export class StarshipComponent implements OnInit, OnDestroy {
    * Get all starships
    */
   getAllStarShips(page: number): void {
-    this.starShipsService.getAllStarShips(page ? page : this.pageIndex)
+    this.starShipsService.getAllStarShips(page)
       .pipe(
         takeUntil(this.destroy$)
       ).subscribe((response: Paginated<StarShip>) => {

@@ -1,4 +1,4 @@
-import { BackButtonDirective } from './../../core/directives/back-button.directive';
+import { BackButtonDirective } from '../../core/directives/back-button/back-button.directive';
 import { MaterialModule } from './../../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

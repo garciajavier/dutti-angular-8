@@ -1,3 +1,4 @@
+
 import { MaterialModule } from './../../material/material.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -6,8 +7,10 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Router } from '@angular/router';
 
 describe('TopbarMenuComponent', () => {
+  let router: Router;
   let component: TopbarMenuComponent;
   let fixture: ComponentFixture<TopbarMenuComponent>;
 
@@ -17,7 +20,7 @@ describe('TopbarMenuComponent', () => {
       imports: [
         HttpClientTestingModule,
         MaterialModule,
-        RouterTestingModule,
+        RouterTestingModule.withRoutes([]),
         BrowserAnimationsModule
       ],
       providers: [
@@ -27,6 +30,7 @@ describe('TopbarMenuComponent', () => {
   }));
 
   beforeEach(() => {
+    router = TestBed.get(Router);
     fixture = TestBed.createComponent(TopbarMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -34,5 +38,17 @@ describe('TopbarMenuComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should logout() navigate to login', () => {
+    const navigateSpy = spyOn(router, 'navigate');
+    component.logout();
+    expect(navigateSpy).toHaveBeenCalledWith(['/login']);
+  });
+
+  it('should starship() navigate to login', () => {
+    const navigateSpy = spyOn(router, 'navigate');
+    component.starship();
+    expect(navigateSpy).toHaveBeenCalledWith(['/']);
   });
 });

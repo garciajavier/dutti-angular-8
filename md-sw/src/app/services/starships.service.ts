@@ -16,7 +16,7 @@ export class StarShipsService {
   /**
    * Get all starships in paginated format
    */
-  getAllStarShips(page: number = 1): Observable<Paginated<StarShip>> {
+  getAllStarShips(page: number): Observable<Paginated<StarShip>> {
     if (!this.cache.cache[`$page-${page}`]) {
       const endpoint = `${environment.api_sw_url_base}/starships/?page=${page}`;
       this.cache.cache[`$page-${page}`] = this.http.get<Paginated<StarShip>>(endpoint).pipe(this.cache.cachePipe());

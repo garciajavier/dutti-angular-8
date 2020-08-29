@@ -2,7 +2,7 @@ import { UserService } from '@/services/user.service';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import { takeUntil, first } from 'rxjs/operators';
+import { takeUntil, take } from 'rxjs/operators';
 import { User } from '@/core/models/user.model';
 
 @Injectable({ providedIn: 'root' })
@@ -27,7 +27,7 @@ export class UserResolver implements Resolve<User>, OnDestroy {
     return this.service.getAll()
       .pipe(
         takeUntil(this.destroy$),
-        first()
+        take(1)
       );
   }
 

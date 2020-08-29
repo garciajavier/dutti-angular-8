@@ -48,9 +48,7 @@ describe('AdminUserComponent', () => {
   });
 
   it('delete user', () => {
-    const service: UserService = TestBed.get(UserService);
-    spyOn(service, 'delete').and.returnValue(of());
     component.deleteUser(0);
-    expect(service.delete).toHaveBeenCalled();
+    expect(component.users).toBeDefined();
   });
 });

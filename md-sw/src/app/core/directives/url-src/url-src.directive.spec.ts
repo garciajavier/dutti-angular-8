@@ -1,10 +1,10 @@
 import { UrlSrcDirective } from '././url-src.directive';
 import { Component, DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 @Component({
-  template: `<div urlSrc [url]="urlSrc" [bypass]="byPass"></div>`,
+  template: `<div urlSrc [url]="urlSrc" [bypass]="byPass"></div>`
 })
 class TestUrlSrcComponent {
   urlSrc = '/test';
@@ -24,14 +24,14 @@ describe('UrlSrcDirective', () => {
     inputEl = fixture.debugElement.query(By.css('div'));
   });
 
-  it('should create an instance', () => {
+  it('should create an instance', async(() => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
     expect(inputEl.nativeElement.style.backgroundImage).toBe(`url("/test")`);
-  });
-  it('should create an instance with no urlSrc', () => {
+  }));
+  it('should create an instance with no urlSrc', async(() => {
     component.urlSrc = null;
     fixture.detectChanges();
     expect(inputEl.nativeElement.style.backgroundImage).toBe('');
-  });
+  }));
 });

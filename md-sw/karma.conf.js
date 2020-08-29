@@ -29,10 +29,10 @@ module.exports = function(config) {
         singleRun: false,
         restartOnFileChange: true,
         files: [
-            { pattern: 'assets/images/*.*', watched: false, included: true, served: true },
+            { pattern: 'src/assets/images/*.*', watched: false, included: false, served: true }
         ],
         proxies: {
-            '/assets/': 'assets/',
+            '/assets/images/': '/base/src/assets/images/'
         }
     });
 };

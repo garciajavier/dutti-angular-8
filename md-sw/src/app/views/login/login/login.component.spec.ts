@@ -1,9 +1,9 @@
 import { AuthenticationService } from '@/core/services/authentication.service';
-import { USERS } from './../../../../assets/mocks/user/admin-user.mock';
-import { AuthGuard } from './../../../core/guards/auth.guard';
+import { USERS } from 'assets/mocks/admin-user.mock';
+import { AuthGuard } from '@/core/guards/auth.guard';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { MaterialModule } from './../../../material/material.module';
+import { MaterialModule } from '@/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -52,15 +52,17 @@ describe('LoginComponent', () => {
     });
     fixture.detectChanges();
     component.onSubmit();
+    expect(component.loginForm.valid).toBeDefined();
   });
 
   it('should call login and wrong credentials', () => {
     component.ngOnInit();
     component.loginForm.setValue({
       username: 'john',
-      password: '111'
+      password: ''
     });
     fixture.detectChanges();
     component.onSubmit();
+    expect(component.loginForm.valid).toBeFalsy();
   });
 });

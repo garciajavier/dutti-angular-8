@@ -1,7 +1,7 @@
-import { AuthenticationService } from './../../core/services/authentication.service';
+import { AuthenticationService } from '../../core/services/authentication.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from './../../services/user.service';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { User } from '@/core/models/user.model';
 import { BehaviorSubject } from 'rxjs';
@@ -33,10 +33,10 @@ export class AdminUserComponent implements OnInit {
 
   deleteUser(id: number) {
     this.userService.delete(id)
-      .pipe(first())
+      .pipe(take(1))
       .subscribe(() => {
         this.userService.getAll()
-          .pipe(first())
+          .pipe(take(1))
           .subscribe(users => {
             this.users.next(users);
           });

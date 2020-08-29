@@ -85,6 +85,11 @@
                             "src/favicon.ico",
                             "src/assets"
                         ],
+                        "codeCoverageExclude": [
+                            "src/app/core/guards/**/*",
+                            // "src/app/core/helpers/**/*",
+                            "src/app/core/models/**/*",
+                        ],
                         "styles": [
                             "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/assets/fonts/fonts.scss",

@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { AuthenticationService } from '@/core/services/authentication.service';
 
 
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.authenticationService.login(this.f.username.value, this.f.password.value)
-      .pipe(first())
+      .pipe(take(1))
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);

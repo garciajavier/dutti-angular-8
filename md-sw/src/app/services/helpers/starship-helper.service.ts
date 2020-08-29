@@ -14,11 +14,8 @@ export class StarshipHelperService {
     starShip.id = parseInt(starShip.url.split('/')[starShip.url.split('/').length - 2], 0);
     starShip.UUID = starShip.url.substring(environment.api_sw_imageUrl_base.length);
     starShip.imageUrl = `${environment.api_sw_imageUrl_base}${starShip.id}.jpg`;
-    starShip.defaultImage = 'url(assets/images/not_found.png)';
+    starShip.defaultImage = 'url(/assets/images/not_found.png)';
     return starShip;
   }
 
-  getNextPage(starShip: StarShip): number {
-    return 1;
-  }
 }

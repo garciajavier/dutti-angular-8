@@ -1,13 +1,11 @@
-﻿import { DataService } from './../../../services/data-service.service';
+
 import { MatSnackBar } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { AuthenticationService } from '@/core/services/authentication.service';
 import { UserService } from '@/services/user.service';
-import { Role } from '@/core/models/role.model';
-
 
 @Component({
   selector: 'app-register',
@@ -24,8 +22,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private snackBar: MatSnackBar,
-    public authenticationService: AuthenticationService,
-    private dataService: DataService
+    public authenticationService: AuthenticationService
   ) {
     // redirect to starship if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -34,9 +31,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.get('user-roles').subscribe((roles: Role[]) => {
-      this.authenticationService.setRoles = roles;
-    });
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -45,9 +39,6 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
 
   onSubmit() {
     this.submitted = true;
@@ -59,7 +50,7 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
     this.userService.register(this.registerForm.value)
-      .pipe(first())
+      .pipe(take(1))
       .subscribe(() => {
         this.snackBar.open('Registro completado', 'OK', {
           duration: 2000,
