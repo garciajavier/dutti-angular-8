@@ -1,4 +1,5 @@
-import { BackButtonDirective } from '../../core/directives/back-button/back-button.directive';
+import { CoreModule } from './../../core/core.module';
+
 import { MaterialModule } from './../../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,11 +11,12 @@ import { StarshipDetailComponent } from './starship-detail/starship-detail.compo
 
 
 @NgModule({
-  declarations: [StarshipComponent, StarshipCardComponent, StarshipDetailComponent, BackButtonDirective],
+  declarations: [StarshipComponent, StarshipCardComponent, StarshipDetailComponent],
   imports: [
     CommonModule,
     StarshipRoutingModule,
-    MaterialModule
+    MaterialModule,
+    CoreModule
   ]
 })
 export class StarshipModule { }

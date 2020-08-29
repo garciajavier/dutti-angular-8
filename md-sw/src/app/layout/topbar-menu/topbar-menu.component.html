@@ -1,6 +1,6 @@
 <mat-toolbar class="d-flex justify-content-between" *ngIf="currentUser">
     <span></span>
-    <span><img class="logo" width="160px" src="/assets/images/mslogo.svg" alt="Massimo Dutti logo"></span>
+    <span><img class="logo ml-14" width="160px" src="/assets/images/mslogo.svg" alt="Massimo Dutti logo"></span>
     <div>
         <span class="pr-4">Hola, {{currentUser.firstName}} {{currentUser.lastName}}</span>
         <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
@@ -14,8 +14,13 @@
                 <a mat-list-item [routerLink]="'/'" (click)="sidenav.toggle()"> Naves espaciales </a>
                 <div mat-subheader>Administración</div>
                 <a mat-list-item [routerLink]="'/users'" (click)="sidenav.toggle()"> Usuarios </a>
-                <a class="bottom" mat-list-item (click)="logout()">
+                <span class="bottom">
+
+                  <a mat-list-item [routerLink]="'/info'">
+                    <mat-icon class="mr-3">info</mat-icon>Informació </a>
+                  <a mat-list-item (click)="logout()">
                     <mat-icon class="mr-3">power_settings_new</mat-icon>Salir </a>
+                  </span>
             </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>

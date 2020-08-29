@@ -1,0 +1,140 @@
+<div class="pt-2 pl-5 mb-2 pr-5 row">
+    <button mat-button appBackButton>Volver</button>
+</div>
+<div class="h-100 row justify-content-center">
+
+    <div class="col-md-6">
+        <mat-card class="card text-md-center pl-14 mb-5">
+            <mat-card-content>
+                <h5 class="text-md-center mt-2 mb-4" id="massimo-dutti-star-wars">Massimo Dutti - Star Wars</h5>
+                <p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 8.1.0.</p>
+
+                <h5 class="text-md-center mt-5 mb-4" id="get-started">Get started</h5>
+                <h5 class="text-md-center mt-5 mb-4" id="clone-the-repo">Clone the repo</h5>
+                <pre><code class="lang-shell">git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/garciajavier/dutti-angular-<span class="hljs-number">8</span>.git
+                  </code></pre>
+
+                <h5 class="text-md-center mt-5 mb-4" id="install-npm-packages">Install npm packages</h5>
+                <p>Install the <code>npm</code> packages described in the <code>package.json</code> and verify that it works:</p>
+                <pre><code class="lang-shell"><p class="hljs-built_in">npm install</p><p class="hljs-built_in">npm start</p></code></pre>
+
+
+                <h5 class="text-md-center mt-5 mb-4" id="development-server">Development server</h5>
+                <p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The app will automatically reload if you change any of the source files.</p>
+                <p>Shut it down manually with <code>Ctrl-C</code>.</p>
+
+
+                <h5 class="text-md-center mt-5 mb-4" id="npm-scripts">npm scripts</h5>
+                <p>These are the most useful commands defined in <code>package.json</code>:</p>
+                <ul class="text-md-left ml-5">
+                    <li><code>npm start</code> - runs the TypeScript compiler, asset copier, and a server at the same time, all three in &quot;watch mode&quot;.</li>
+                    <li><code>npm run build</code> - runs the TypeScript compiler and asset copier once.</li>
+                    <li><code>npm run build --prod</code> - runs the TypeScript compiler and asset copier once.</li>
+                </ul>
+                <p>These are the test-related scripts:</p>
+                <ul class="text-md-left ml-5">
+                    <li><code>npm run test-coverage</code> - runs Karma + Instanbul on the project files. (Test + Coverage)</li>
+                    <li><code>npm run lint</code> - runs <code>tslint</code> on the project files..</li>
+                    <li><code>tslint --config tslint-imports.json --fix --project</code> clean unused imports on ts files.</li>
+                </ul>
+                <h5 class="text-md-center mt-5 mb-4" id="introducci-n-a-la-prueba">Introducción a la prueba</h5>
+                <p>MD Developers recibió el encargo de preparar un prototipo para mostrar un listado de naves starwars solo para usuarios registrados. El prototipo gustó mucho y fue aprobado por el comité de la empresa como proyecto para 2019.</p>
+                <p>Tu equipo acaba de recibir el encargo de adaptar este prototipo y convertirlo en un producto real. Tienes potestad para cambiar lo que quieras pero se deben cumplir unos mínimos.</p>
+                <h5 class="text-md-center mt-5 mb-4" id="requisitos-m-nimos">Requisitos mínimos</h5>
+                <ul class="text-md-left ml-5">
+                    <li>El listado de naves solo puede ser visible para usuarios registrados.</li>
+                    <li>El listado de naves debe ser consumido desde el api proporcionada por nuestro proveedor: <a href="https://swapi.dev">https://swapi.dev</a></li>
+                    <li>Se deben poder registrar nuevos usuarios. No es necesario implementar la parte de servidor.</li>
+                </ul>
+                <h5 class="text-md-center mt-5 mb-4" id="tareas">Tareas</h5>
+                <ol>
+                    <li>Migrar el prototipo actual a un proyecto nuevo con angular. <strong><mat-icon class="ml-3">done</mat-icon></strong>
+                        <blockquote>
+                            <p>He usado la versión ^8.0.0 porque es la actual LTS con soporte hasta 28 de Noviembre 2020.</p>
+                        </blockquote>
+                    </li>
+                    <li>Listado naves:
+                        <ul>
+                            <li>Implementar correctamente la paginación del listado de naves. <strong><mat-icon class="ml-3">done</mat-icon></strong>
+                                <blockquote>
+                                    <p>Para la paginación se ha utilizado el modulo de <a href="https://material.angular.io/components/paginator/overview">paginación</a> que nos brinda Angular Material</p>
+                                </blockquote>
+                            </li>
+                            <li>Hay imágenes que no existen, en ese caso se debe mostrar un texto o imagen informando que no está disponible. <strong><mat-icon class="ml-3">done</mat-icon></strong>
+                                <blockquote>
+                                    <p>Se ha cargado una 'not found'en los assets del proyecto que carga cuando la respuesta a la petición de la imagen es errónea, ya sea por no estar definida o url incorrecta.
+                                    </p>
+                                </blockquote>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Creación de una ficha de detalle de la nave:
+                        <ul>
+                            <li>Se quiere crear una ficha que se abra al hacer click sobre una de las naves que aparecen. <strong><mat-icon class="ml-3">done</mat-icon></strong>
+                                <blockquote>
+                                    <p>Estructura de componentes padres (con lógica) y componentes hijos (representacionales)</p>
+                                </blockquote>
+                            </li>
+                            <li>Se debe implementar un botón de volver al listado <strong><mat-icon class="ml-3">done</mat-icon></strong>
+                                <blockquote>
+                                    <p>He utilizado una <a href="https://angular.io/guide/attribute-directives">Directiva</a> para el botón Volver, así se podría aprovechar la acción en otros componentes.</p>
+                                </blockquote>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>Modernización del site. Cambia los estilos que creas pertinentes. El único criterio es que a dirección le gustaría que se pareciera lo máximo posible a la web de Massimo Dutti. <strong><mat-icon class="ml-3">done</mat-icon></strong></p>
+                        <blockquote>
+                            <p>Para esto, he utilizado <a href="https://material.angular.io/" title="Angular Material">Angular Material</a>. He personalizado un tema y aplicado a la aplicación. Esto reduce el uso de css en los elementos html. </p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <p>Cuando entras por primera vez te debe redirigir a la página de naves. <strong><mat-icon class="ml-3">done</mat-icon></strong></p>
+                        <blockquote>
+                            <p>Para la navegación entre las vistas se ha utilizado el <a href="https://angular.io/guide/router">enrutamiento</a> que brinda Angular. Cabe destacar que se ha utilizado <a href="https://angular.io/guide/lazy-loading-ngmodules">Lazy Loading</a>                                que es una técnica usada en Angular que nos permite cargar sólo, el o los componentes que necesitemos al inicio de nuestra aplicación, estos componentes no cargan cada vez que entres, sino que solo cargan una sola vez.
+                                También he usado <a href="https://angular.io/api/router/Resolve">Resolver</a> que es una intefaz para que las clases puedan usar proveedor de datos con el enrutador para resolver datos durante la navegación.</p>
+                        </blockquote>
+                    </li>
+                    <li>Cache
+                        <ul>
+                            <li>Implementar una caché del lado de cliente para proteger la api:
+                                <ul>
+                                    <li>Implementa un sistema de caché que evite realizar la misma petición contra el servidor durante 5 minutos. <strong><mat-icon class="ml-3">done</mat-icon></strong></li>
+                                    <li>Para resolver este punto intenta aprovechar las ventajas que ofrece Angular <strong><mat-icon class="ml-3">done</mat-icon></strong>
+                                        <blockquote>
+                                            <p>He creado un servicio de caché y he utilizado <a href="https://angular.io/guide/rx-library">rxjs</a>. A modo de resumen, el servicio tiene la lista de observables de las peticiones http y se van completado cada
+                                                una de ellas a los 5 minutos de ser almacenada. Se injecta el servicio donde se desee y se resuelve el observable almacenado en caso de existir, si no se hace la petición.</p>
+                                        </blockquote>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Implementar un menú para los usuarios registrados:
+                        <ul>
+                            <li>Este menú debe permitir cambiar de página. Crea una página de prueba para comprobar que la navegación funciona. <strong><mat-icon class="ml-3">done</mat-icon></strong>
+                                <blockquote>
+                                    <p>La dispone de un <strong><em>Formulario de acceso</em></strong> para que los usuarios registrados puedan acceder. Los usuarios deberán registrase en con el <strong><em>Formulario de registro</em></strong>. En ese momento
+                                        se puede añidir permisos de usuario y administrador. He implementado unos servicios <a href="https://angular.io/api/router/CanActivate">guard</a> para controlar en la gestión de rutas los permisos de navegación.
+                                        La App dispone de una pantalla de Administración de usuarios que muestra los usuarios registros y se pueden eliminar. Para todo esto hace falta tener el <strong><em>rol</em></strong> de <strong><em>Administrador</em></strong>.
+                                        Ademas, he implementado un Servidor de fake backend, simulando el uso de <a href="https://es.wikipedia.org/wiki/JSON_Web_Token">JWT</a> para las peticiones.</p>
+                                </blockquote>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>Tests unitarios: Selecciona algún componente o servicio y aplicarle testing. La idea es que nos demuestres tus conocimientos de testing mas allá de los que ofrece angular al ejecutar un comando de ng-cli. <strong><mat-icon class="ml-3">done</mat-icon></strong></p>
+                        <blockquote>
+                            <p>Se ha hecho testing sobre varios de los componentes, servicios, ... consiguiendo una cobertura superior al 80%, que es mínimo para dar un buen servicio de test.</p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <p>Funcionalidades extra</p>
+                    </li>
+                    <li>Loader spinner autogestiona el uso de un loader con las peticiones http. Se usa la libreria <a href="https://www.npmjs.com/package/ngx-spinner">ngx-spinner</a>.</li>
+                    <li>Error Handler: autogestiona los errores de la app y los muestra al usuario usando <a href="https://material.angular.io/components/snack-bar/overview">snackBar</a> de material.</li>
+                </ol>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

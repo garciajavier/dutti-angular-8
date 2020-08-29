@@ -33,6 +33,11 @@ export const routes: Routes = [
         path: 'starships',
         loadChildren: () => import('./views/starship/starship.module').then(m => m.StarshipModule),
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'info',
+        loadChildren: () => import('./views/info/info.module').then(m => m.InfoModule),
+        canActivate: [AuthGuard]
       }
     ]
   },

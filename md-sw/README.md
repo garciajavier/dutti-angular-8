@@ -39,10 +39,6 @@ These are the test-related scripts:
 * `npm run lint` - runs `tslint` on the project files..
 * `tslint --config tslint-imports.json --fix --project` clean unused imports on ts files.
 
-In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends
-of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to
-eat: it was a [hobbit-hole](https://en.wikipedia.org/wiki/Hobbit#Lifestyle "Hobbit lifestyles"), and that means comfort.
-
 # Introducción a la prueba
 MD Developers recibió el encargo de preparar un prototipo para mostrar un listado de naves starwars solo para usuarios registrados. El prototipo gustó mucho y fue aprobado por el comité de la empresa como proyecto para 2019.
 

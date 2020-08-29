@@ -1,3 +1,4 @@
+import { CoreModule } from './../../core/core.module';
 import { MaterialModule } from './../../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -14,7 +15,8 @@ import { RegisterComponent } from './register/register.component';
     CommonModule,
     LoginRoutingModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    CoreModule
   ]
 })
 export class LoginModule { }

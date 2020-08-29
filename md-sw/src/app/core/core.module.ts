@@ -1,3 +1,4 @@
+import { BackButtonDirective } from './directives/back-button/back-button.directive';
 import { UrlSrcDirective } from './directives/url-src/url-src.directive';
 import { LoaderSpinnerComponent } from './components/loader-spinner/loader-spinner.component';
 
@@ -14,7 +15,8 @@ import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
 @NgModule({
   declarations: [
     LoaderSpinnerComponent,
-    UrlSrcDirective
+    UrlSrcDirective,
+    BackButtonDirective
   ],
   imports: [
     CommonModule,
@@ -26,6 +28,7 @@ import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
     LoaderSpinnerComponent,
     LayoutModule,
     NgxSpinnerModule,
+    BackButtonDirective
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true },

@@ -41,6 +41,15 @@ span {
     font-size: 14px;
 }
 
+ol {
+    margin-left: 50px;
+    text-align: start;
+}
+
+ol li {
+    padding-top: 24px;
+}
+
 // Buttons
 button:focus,
 button:active:focus,
