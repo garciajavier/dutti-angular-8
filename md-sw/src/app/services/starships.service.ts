@@ -15,6 +15,7 @@ export class StarShipsService {
 
   /**
    * Get all starships in paginated format
+   * @param page Page number
    */
   getAllStarShips(page: number): Observable<Paginated<StarShip>> {
     if (!this.cache.cache[`$page-${page}`]) {
@@ -26,6 +27,7 @@ export class StarShipsService {
 
   /**
    * Get one Starships
+   * @param id Id Starship
    */
   getStarShip(id: string): Observable<StarShip> {
     if (!this.cache.cache[`$id-${id}`]) {

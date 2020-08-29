@@ -1,22 +1,37 @@
 import { AuthenticationService } from '@/core/services/authentication.service';
 
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { User } from '@/core/models/user.model';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-topbar-menu',
   templateUrl: './topbar-menu.component.html',
   styleUrls: ['./topbar-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TopbarMenuComponent {
+export class TopbarMenuComponent implements OnDestroy {
+
+  /**
+   * Use to destroy and prevent memory leaks
+   */
+  private destroy$: Subject<void> = new Subject<void>();
+
   currentUser: User;
 
   constructor(
     private router: Router,
     public authenticationService: AuthenticationService
   ) {
-    this.authenticationService.currentUser$.subscribe(user => this.currentUser = user);
+    this.authenticationService.currentUser$.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(user => this.currentUser = user);
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   logout() {

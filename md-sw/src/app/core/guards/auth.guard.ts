@@ -17,9 +17,8 @@ export class AuthGuard implements CanActivate {
     if (currentUser) {
 
       if (route.data.roles && !this.authenticationService.userCan(route.data.roles)) {
-        // this.router.navigate(['/login']);
         this.snackBar.open('No tienes privilegios', 'OK', {
-          duration: 2000,
+          duration: 2000
         });
         return false;
       }

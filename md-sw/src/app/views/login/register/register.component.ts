@@ -1,18 +1,25 @@
 
 import { MatSnackBar } from '@angular/material';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { take } from 'rxjs/operators';
+import { take, takeUntil } from 'rxjs/operators';
 import { AuthenticationService } from '@/core/services/authentication.service';
 import { UserService } from '@/services/user.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: 'register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
+
+  /**
+   * Use to destroy and prevent memory leaks
+   */
+  private destroy$: Subject<void> = new Subject<void>();
+
   registerForm: FormGroup;
   loading = false;
   submitted = false;
@@ -40,6 +47,14 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  /**
+   * Submit registration
+   */
   onSubmit() {
     this.submitted = true;
 
@@ -50,10 +65,12 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
     this.userService.register(this.registerForm.value)
-      .pipe(take(1))
+      .pipe(
+        take(1),
+        takeUntil(this.destroy$))
       .subscribe(() => {
         this.snackBar.open('Registro completado', 'OK', {
-          duration: 2000,
+          duration: 2000
         });
         this.router.navigate(['/']);
       });

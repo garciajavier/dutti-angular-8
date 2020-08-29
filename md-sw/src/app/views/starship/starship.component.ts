@@ -19,7 +19,7 @@ import { StarshipHelperService } from '@/services/helpers/starship-helper.servic
 export class StarshipComponent implements OnInit, OnDestroy {
 
   /**
-   * Contains the list of notifications
+   * Contains the list of StarShips
    */
   starShips: BehaviorSubject<StarShip[]> = new BehaviorSubject<StarShip[]>([]);
   starShips$ = this.starShips.asObservable();
@@ -67,10 +67,18 @@ export class StarshipComponent implements OnInit, OnDestroy {
       });
   }
 
+  /**
+   * Navigate to the detail starships page
+   * @param starShip starShip clicked
+   */
   detail(starShip: StarShip) {
     this.router.navigate(['starships', starShip.id]);
   }
 
+  /**
+   * Retrieve data of Starships paginated
+   * @param event pagination
+   */
   getPaginatorData(event) {
     this.getAllStarShips(event.pageIndex + 1);
   }

@@ -32,7 +32,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
           }
           // window.alert(errorMessage);
           this.snackBar.open(errorMessage, 'ERROR', {
-            duration: 10000,
+            duration: 8000,
             panelClass: ['alert-snackbar']
           });
           if (error.status === 401) {

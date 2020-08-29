@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data-service.service';
 
 
 import { Injectable } from '@angular/core';
@@ -19,14 +20,19 @@ export class AuthenticationService {
   public roles$ = this.roles.asObservable();
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private dataService: DataService) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser$ = this.currentUserSubject.asObservable();
+
+    this.dataService.get('user-roles').subscribe(response => {
+      this.roles.next(response);
+    });
   }
 
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
+
   set setRoles(roles: Role[]) {
     this.roles.next(roles);
   }

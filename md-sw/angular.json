@@ -87,7 +87,7 @@
                         ],
                         "codeCoverageExclude": [
                             "src/app/core/guards/**/*",
-                            // "src/app/core/helpers/**/*",
+                            "src/app/core/components/**/**/*",
                             "src/app/core/models/**/*",
                         ],
                         "styles": [
