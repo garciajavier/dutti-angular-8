@@ -23,10 +23,6 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private dataService: DataService) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser$ = this.currentUserSubject.asObservable();
-
-    this.dataService.get('user-roles').subscribe(response => {
-      this.roles.next(response);
-    });
   }
 
   public get currentUserValue(): User {

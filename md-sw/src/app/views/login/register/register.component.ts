@@ -1,3 +1,4 @@
+import { DataService } from './../../../services/data-service.service';
 
 import { MatSnackBar } from '@angular/material';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -7,6 +8,7 @@ import { take, takeUntil } from 'rxjs/operators';
 import { AuthenticationService } from '@/core/services/authentication.service';
 import { UserService } from '@/services/user.service';
 import { Subject } from 'rxjs';
+import { Role } from '@/core/models/role.model';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +31,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private router: Router,
     private userService: UserService,
     private snackBar: MatSnackBar,
-    public authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService,
+    private dataService: DataService
   ) {
     // redirect to starship if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -38,6 +41,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.dataService.get('user-roles').pipe(takeUntil(this.destroy$)).subscribe((roles: Role[]) => {
+      this.authenticationService.setRoles = roles;
+    });
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
