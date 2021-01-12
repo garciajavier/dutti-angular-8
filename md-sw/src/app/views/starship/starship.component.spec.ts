@@ -10,7 +10,7 @@ import { AuthenticationService } from '@/core/services/authentication.service';
 import { MatCardModule } from '@angular/material/card';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { StarshipComponent } from './starship.component';
-import { MatPaginatorModule } from '@angular/material';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 
 

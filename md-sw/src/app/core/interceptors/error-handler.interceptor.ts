@@ -1,5 +1,5 @@
 import { AuthenticationService } from '@/core/services/authentication.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   HttpEvent,
   HttpInterceptor,
