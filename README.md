@@ -1,4 +1,4 @@
-# Massimo Dutti - Star Wars
+# Planeta - Star Wars
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
@@ -69,7 +69,7 @@ Tienes potestad para cambiar lo que quieras pero se deben cumplir unos mínimos.
   > Estructura de componentes padres (con lógica) y componentes hijos (representacionales)
   - Se debe implementar un botón de volver al listado ***DONE***
   > He utilizado una [Directiva](https://angular.io/guide/attribute-directives) para el botón Volver, así se podría aprovechar la acción en otros componentes.
-4. Modernización del site. Cambia los estilos que creas pertinentes. El único criterio es que a dirección le gustaría que se pareciera lo máximo posible a la web de Massimo Dutti. ***DONE***
+4. Modernización del site. Cambia los estilos que creas pertinentes. El único criterio es que a dirección le gustaría que se pareciera lo máximo posible a la web de Planeta. ***DONE***
  > Para esto, he utilizado [Angular Material](https://material.angular.io/ "Angular Material"). He personalizado un tema y aplicado a la aplicación. Esto reduce el uso de css en los elementos html. 
   
 5. Cuando entras por primera vez te debe redirigir a la página de naves. ***DONE***

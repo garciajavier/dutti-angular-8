@@ -9,10 +9,12 @@ import { StarShip } from '@/core/models/starship.model';
 export class StarshipCardComponent implements OnInit {
 
   @Input() starShip: StarShip;
+  id: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.id = this.starShip.url.replace('http://swapi.dev/api/starships/', ' ').slice(0, -1);
   }
 
 }
